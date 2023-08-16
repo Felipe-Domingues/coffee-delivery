@@ -14,7 +14,7 @@ export const GlobalStyle = createGlobalStyle`
 }
 
 body{
-  background: ${(props) => props.theme['yellow-dark']};
+  background: ${(props) => props.theme.background};
   color:${(props) => props.theme['base-text']};
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
@@ -25,5 +25,4 @@ body, input,textarea,button{
   font-weight: 400;
   font-size: 1rem;
 }
-
 `
