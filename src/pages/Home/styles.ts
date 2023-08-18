@@ -3,6 +3,7 @@ import { styled } from 'styled-components'
 export const Container = styled.main`
   display: flex;
   padding: 2rem 10rem 0;
+  flex-direction: column;
 
   h2 {
     color: ${(props) => props.theme['base-subtitle']};
@@ -13,4 +14,11 @@ export const Container = styled.main`
     line-height: 130%;
     margin-bottom: 3.375rem;
   }
+`
+
+export const ProductsList = styled.div`
+  display: grid;
+  column-gap: 2rem;
+  row-gap: 2.5rem;
+  grid-template-columns: 16rem 16rem 16rem 16rem;
 `
