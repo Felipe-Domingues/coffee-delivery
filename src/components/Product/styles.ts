@@ -86,4 +86,9 @@ export const Price = styled.p`
 export const AddToCart = styled(BaseButton)`
   color: ${(props) => props.theme['base-card']};
   background: ${(props) => props.theme['purple-dark']};
+  transition: background-color 0.6s;
+
+  &:hover {
+    background: ${(props) => props.theme.purple};
+  }
 `
