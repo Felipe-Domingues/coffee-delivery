@@ -3,9 +3,7 @@ import styled from 'styled-components'
 export const LayoutContainer = styled.div`
   display: flex;
   flex-direction: column;
-  max-width: 104rem;
-  padding: 2rem;
-  margin: 0 auto;
+  padding-bottom: 2rem;
 `
 
 export const BaseButton = styled.button`

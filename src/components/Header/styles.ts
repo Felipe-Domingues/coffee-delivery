@@ -3,7 +3,7 @@ import { BaseButton } from '../../layouts/DefaultLayout/styles'
 
 export const HeaderContainer = styled.header`
   display: flex;
-  margin-bottom: 2rem;
+  margin: 2rem 10rem;
   flex: 1;
   align-items: center;
   justify-content: space-between;
