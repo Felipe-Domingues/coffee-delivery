@@ -20,5 +20,5 @@ export const ProductsList = styled.div`
   display: grid;
   column-gap: 2rem;
   row-gap: 2.5rem;
-  grid-template-columns: 16rem 16rem 16rem 16rem;
+  grid-template-columns: auto auto auto auto;
 `
