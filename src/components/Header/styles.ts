@@ -8,6 +8,10 @@ export const HeaderContainer = styled.header`
   align-items: center;
   justify-content: space-between;
 
+  img#logo {
+    cursor: pointer;
+  }
+
   nav {
     display: flex;
     gap: 0.75rem;
@@ -18,11 +22,28 @@ export const LocationButton = styled(BaseButton)`
   gap: 4px;
   background: ${(props) => props.theme['purple-light']};
   color: ${(props) => props.theme['purple-dark']};
+  transition:
+    color 0.6s,
+    background-color 0.6s;
+
+  &:hover {
+    color: ${(props) => props.theme.white};
+    background: ${(props) => props.theme.purple};
+  }
 `
 
 export const CheckoutButton = styled(BaseButton)`
   background: ${(props) => props.theme['yellow-light']};
   color: ${(props) => props.theme['yellow-dark']};
+
+  transition:
+    color 0.6s,
+    background-color 0.6s;
+
+  &:hover {
+    color: ${(props) => props.theme.white};
+    background: ${(props) => props.theme.yellow};
+  }
 
   div#Counter {
     height: 1.25rem;
