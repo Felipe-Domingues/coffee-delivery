@@ -1,5 +1,5 @@
 import { styled } from 'styled-components'
-import IntroBackground from '../../assets/intro_background.svg'
+import IntroBackground from '../../../../assets/intro_background.svg'
 
 export const BackgroundContainer = styled.div`
   padding: 5.75rem 10rem;

@@ -1,5 +1,5 @@
-import { Intro } from '../../components/Intro'
-import { ProductTemplate, ProductPattern } from '../../components/Product'
+import { Intro } from './components/Intro'
+import { ProductTemplate, ProductPattern } from './components/Product'
 import { Container, ProductsList } from './styles'
 import { v4 as uuidv4 } from 'uuid'
 
@@ -131,7 +131,9 @@ export function Home() {
       <Container>
         <h2>Nossos cafés</h2>
         <ProductsList>
-          <ProductTemplate Product={Products} />
+          {Products.map((prod) => {
+            return <ProductTemplate key={prod.id} Product={prod} />
+          })}
         </ProductsList>
       </Container>
     </>

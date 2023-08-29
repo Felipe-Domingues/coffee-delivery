@@ -6,7 +6,7 @@ import {
   ItemIcon,
   Container,
 } from './styles'
-import IntroImage from '../../assets/intro_image.svg'
+import IntroImage from '../../../../assets/intro_image.svg'
 export function Intro() {
   return (
     <BackgroundContainer>

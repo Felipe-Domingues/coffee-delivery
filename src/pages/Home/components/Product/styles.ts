@@ -1,5 +1,5 @@
 import { styled } from 'styled-components'
-import { BaseButton } from '../../layouts/DefaultLayout/styles'
+import { BaseButton } from '../../../../layouts/DefaultLayout/styles'
 
 export const ProductContainer = styled.div`
   display: flex;
