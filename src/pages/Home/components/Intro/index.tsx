@@ -19,25 +19,25 @@ export function Intro() {
           </h2>
           <ItemsContainer>
             <Item>
-              <ItemIcon statusColor="yellowDark">
+              <ItemIcon statuscolor="yellowDark">
                 <ShoppingCart size={16} weight="fill" />
               </ItemIcon>
               <p>Compra simples e segura</p>
             </Item>
             <Item>
-              <ItemIcon statusColor="gray">
+              <ItemIcon statuscolor="gray">
                 <Package size={16} weight="fill" />
               </ItemIcon>
               <p>Embalagem mantém o café intacto</p>
             </Item>
             <Item>
-              <ItemIcon statusColor="yellow">
+              <ItemIcon statuscolor="yellow">
                 <Timer size={16} weight="fill" />
               </ItemIcon>
               <p>Entrega rápida e rastreada</p>
             </Item>
             <Item>
-              <ItemIcon statusColor="purple">
+              <ItemIcon statuscolor="purple">
                 <Coffee size={16} weight="fill" />
               </ItemIcon>
               <p>O café chega fresquinho até você</p>

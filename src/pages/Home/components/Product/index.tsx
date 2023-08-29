@@ -7,23 +7,14 @@ import {
   TagsContainer,
 } from './styles'
 import { CustomInputNumber } from '../../../../components/InputNumber'
-
-export interface ProductPattern {
-  id: string
-  name: string
-  description: string
-  price: number
-  tags: string[]
-  image: string
-  quantity?: number | null
-}
+import { Product } from '../../../../reducers/products/reducer'
 
 function PriceToLocalCurrency(Price: number) {
   return Price.toLocaleString('pt-br', { minimumFractionDigits: 2 })
 }
 
 interface PropsPattern {
-  Product: ProductPattern
+  Product: Product
 }
 
 export function ProductTemplate(props: PropsPattern) {

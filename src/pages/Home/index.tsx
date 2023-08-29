@@ -1,11 +1,12 @@
 import { Intro } from './components/Intro'
-import { ProductTemplate, ProductPattern } from './components/Product'
 import { Container, ProductsList } from './styles'
 import { v4 as uuidv4 } from 'uuid'
 
 import * as ProductImages from '../../assets/products'
+import { Product } from '../../reducers/products/reducer'
+import { ProductTemplate } from './components/Product'
 
-const Products: ProductPattern[] = [
+const Products: Product[] = [
   {
     id: uuidv4(),
     name: 'Expresso Tradicional',
@@ -13,6 +14,7 @@ const Products: ProductPattern[] = [
     price: 9.9,
     tags: ['Tradicional'],
     image: ProductImages.Expresso,
+    quantity: 0,
   },
   {
     id: uuidv4(),
@@ -21,6 +23,7 @@ const Products: ProductPattern[] = [
     price: 9.9,
     tags: ['Tradicional'],
     image: ProductImages.Americano,
+    quantity: 0,
   },
   {
     id: uuidv4(),
@@ -29,6 +32,7 @@ const Products: ProductPattern[] = [
     price: 9.9,
     tags: ['Tradicional'],
     image: ProductImages.ExpressoCremoso,
+    quantity: 0,
   },
   {
     id: uuidv4(),
@@ -37,6 +41,7 @@ const Products: ProductPattern[] = [
     price: 10.5,
     tags: ['Tradicional', 'Gelado'],
     image: ProductImages.CafeGelado,
+    quantity: 0,
   },
   {
     id: uuidv4(),
@@ -45,6 +50,7 @@ const Products: ProductPattern[] = [
     price: 12.99,
     tags: ['Tradicional', 'Com Leite'],
     image: ProductImages.CafeComLeite,
+    quantity: 0,
   },
   {
     id: uuidv4(),
@@ -54,6 +60,7 @@ const Products: ProductPattern[] = [
     price: 12.99,
     tags: ['Tradicional', 'Com Leite'],
     image: ProductImages.Latte,
+    quantity: 0,
   },
   {
     id: uuidv4(),
@@ -63,6 +70,7 @@ const Products: ProductPattern[] = [
     price: 12.99,
     tags: ['Tradicional', 'Com Leite'],
     image: ProductImages.Capuccino,
+    quantity: 0,
   },
   {
     id: uuidv4(),
@@ -72,6 +80,7 @@ const Products: ProductPattern[] = [
     price: 12.99,
     tags: ['Tradicional', 'Com Leite'],
     image: ProductImages.Macchiato,
+    quantity: 0,
   },
   {
     id: uuidv4(),
@@ -80,6 +89,7 @@ const Products: ProductPattern[] = [
     price: 12.99,
     tags: ['Tradicional', 'Com Leite'],
     image: ProductImages.Mochaccino,
+    quantity: 0,
   },
   {
     id: uuidv4(),
@@ -88,6 +98,7 @@ const Products: ProductPattern[] = [
     price: 15.49,
     tags: ['Especial', 'Com Leite'],
     image: ProductImages.ChocolateQuente,
+    quantity: 0,
   },
   {
     id: uuidv4(),
@@ -97,6 +108,7 @@ const Products: ProductPattern[] = [
     price: 15.49,
     tags: ['Especial', 'Alcoólico', 'Gelado'],
     image: ProductImages.Cubano,
+    quantity: 0,
   },
   {
     id: uuidv4(),
@@ -105,6 +117,7 @@ const Products: ProductPattern[] = [
     price: 15.49,
     tags: ['Especial'],
     image: ProductImages.Havaiano,
+    quantity: 0,
   },
   {
     id: uuidv4(),
@@ -113,6 +126,7 @@ const Products: ProductPattern[] = [
     price: 15.49,
     tags: ['Especial'],
     image: ProductImages.Arabe,
+    quantity: 0,
   },
   {
     id: uuidv4(),
@@ -121,6 +135,7 @@ const Products: ProductPattern[] = [
     price: 15.49,
     tags: ['Especial', 'Alcoólico'],
     image: ProductImages.Irlandes,
+    quantity: 0,
   },
 ]
 

@@ -54,7 +54,7 @@ const ICON_COLORS = {
 } as const
 
 interface ItemIconProps {
-  statusColor: keyof typeof ICON_COLORS
+  statuscolor: keyof typeof ICON_COLORS
 }
 
 export const ItemIcon = styled.div<ItemIconProps>`
@@ -64,6 +64,6 @@ export const ItemIcon = styled.div<ItemIconProps>`
   height: 2rem;
   width: 2rem;
   border-radius: 9999px;
-  background: ${(props) => props.theme[ICON_COLORS[props.statusColor]]};
+  background: ${(props) => props.theme[ICON_COLORS[props.statuscolor]]};
   color: ${(props) => props.theme.background};
 `
