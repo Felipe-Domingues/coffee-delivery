@@ -5,12 +5,17 @@ import {
   useReducer,
   useState,
 } from 'react'
-import { Product, cartReducer } from '../reducers/products/reducer'
+import { cartReducer } from '../reducers/cart/reducer'
 import {
   RemoveProductAction,
   RemoveProductItemAction,
   addNewProductAction,
-} from '../reducers/products/actions'
+} from '../reducers/cart/actions'
+
+export interface ProductRelationship {
+  idProduct: string
+  quantity: number
+}
 
 export interface Address {
   zipCode: string
@@ -23,11 +28,11 @@ export interface Address {
 }
 
 interface CartContextType {
-  products: Product[]
+  productsRelationship: ProductRelationship[]
   totalProducts: number
   address: Address | null
   paymentMethod: 'Cartão de Crédito' | 'Cartão de Débito' | 'Dinheiro'
-  addNewProduct: (newProduct: Product) => void
+  addNewProduct: (newProduct: ProductRelationship) => void
   removeProduct: (idProduct: string) => void
   removeProductItem: (idProduct: string) => void
 }
@@ -42,7 +47,7 @@ export function CartContextProvider({ children }: CartContextProviderProps) {
   const [cartState, dispatch] = useReducer(
     cartReducer,
     {
-      products: [],
+      productsRelationship: [],
       address: null,
       paymentMethod: 'Cartão de Crédito',
     },
@@ -59,12 +64,12 @@ export function CartContextProvider({ children }: CartContextProviderProps) {
     },
   )
 
-  const { products, address, paymentMethod } = cartState
+  const { productsRelationship, address, paymentMethod } = cartState
 
   const [totalProducts, setTotalProducts] = useState(() => {
-    if (products.length > 0) {
+    if (productsRelationship.length > 0) {
       let total = 0
-      products.forEach((prod) => {
+      productsRelationship.forEach((prod) => {
         total += prod.quantity
       })
 
@@ -80,7 +85,20 @@ export function CartContextProvider({ children }: CartContextProviderProps) {
     localStorage.setItem('@coffee-delivery:cart-state-1.0.0', stateJSON)
   }, [cartState])
 
-  function addNewProduct(newProduct: Product) {
+  useEffect(() => {
+    if (productsRelationship.length > 0) {
+      let total = 0
+      productsRelationship.forEach((prod) => {
+        total += prod.quantity
+      })
+
+      setTotalProducts(total)
+    }
+
+    setTotalProducts(0)
+  }, [productsRelationship])
+
+  function addNewProduct(newProduct: ProductRelationship) {
     dispatch(addNewProductAction(newProduct))
   }
 
@@ -95,7 +113,7 @@ export function CartContextProvider({ children }: CartContextProviderProps) {
   return (
     <CartContext.Provider
       value={{
-        products,
+        productsRelationship,
         totalProducts,
         address,
         paymentMethod,

@@ -7,7 +7,7 @@ import {
   TagsContainer,
 } from './styles'
 import { CustomInputNumber } from '../../../../components/InputNumber'
-import { Product } from '../../../../reducers/products/reducer'
+import { Product } from '../../../../reducers/cart/reducer'
 
 function PriceToLocalCurrency(Price: number) {
   return Price.toLocaleString('pt-br', { minimumFractionDigits: 2 })

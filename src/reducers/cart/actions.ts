@@ -1,4 +1,4 @@
-import { Product } from './reducer'
+import { ProductRelationship } from '../../contexts/CartContext'
 
 export enum ActionTypes {
   ADD_NEW_PRODUCT = 'ADD_NEW_PRODUCT',
@@ -7,7 +7,7 @@ export enum ActionTypes {
   REMOVE_PRODUCT_ITEM = 'REMOVE_PRODUCT_ITEM',
 }
 
-export function addNewProductAction(newProduct: Product) {
+export function addNewProductAction(newProduct: ProductRelationship) {
   return {
     type: ActionTypes.ADD_NEW_PRODUCT,
     payload: {
