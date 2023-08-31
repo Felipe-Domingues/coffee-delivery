@@ -1,4 +1,3 @@
-import { ShoppingCart } from '@phosphor-icons/react'
 import {
   AddToCart,
   BuyContainer,
@@ -6,8 +5,10 @@ import {
   ProductContainer,
   TagsContainer,
 } from './styles'
+import { Product } from '../../../../contexts/ProductsContext'
+import { useState } from 'react'
+import { ShoppingCart } from '@phosphor-icons/react'
 import { CustomInputNumber } from '../../../../components/InputNumber'
-import { Product } from '../../../../reducers/cart/reducer'
 
 function PriceToLocalCurrency(Price: number) {
   return Price.toLocaleString('pt-br', { minimumFractionDigits: 2 })
@@ -18,6 +19,47 @@ interface PropsPattern {
 }
 
 export function ProductTemplate(props: PropsPattern) {
+  const [quantity, setQuantity] = useState<number | string>('')
+
+  function decreaseQuantity(el: HTMLInputElement | null) {
+    if (el) {
+      if (parseInt(el.value) > 1) {
+        setQuantity(parseInt(el.value) - 1)
+      } else {
+        setQuantity('')
+      }
+    }
+  }
+
+  function increaseQuantity(el: HTMLInputElement | null) {
+    if (el) {
+      let inputValue = el.value
+      if (!inputValue) {
+        inputValue = '0'
+      }
+
+      const quantityAsInt = parseInt(inputValue.toString())
+      if (quantityAsInt < 10) {
+        setQuantity(parseInt(inputValue) + 1)
+      }
+    }
+  }
+
+  function canIncreaseQuantity(): boolean {
+    const quantityAsInt = parseInt(quantity.toString())
+    if (!isNaN(quantityAsInt)) {
+      if (quantityAsInt >= 10) {
+        return true
+      }
+      return false
+    }
+    return false
+  }
+
+  function canDecreaseQuantity(): boolean {
+    return isNaN(parseInt(quantity.toString()))
+  }
+
   return (
     <ProductContainer key={props.Product.id}>
       <img id="ProductImage" src={props.Product.image} alt="" />
@@ -34,8 +76,18 @@ export function ProductTemplate(props: PropsPattern) {
           R$ <span>{PriceToLocalCurrency(props.Product.price)}</span>
         </Price>
         <div id="CartContainer">
-          <CustomInputNumber />
-          <AddToCart title="Adicionar ao carrinho">
+          <CustomInputNumber
+            idProduct={props.Product.id}
+            quantity={quantity}
+            canDecreaseQuantity={canDecreaseQuantity}
+            canIncreaseQuantity={canIncreaseQuantity}
+            decreaseQuantity={decreaseQuantity}
+            increaseQuantity={increaseQuantity}
+          />
+          <AddToCart
+            disabled={isNaN(parseInt(quantity.toString()))}
+            title="Adicionar ao carrinho"
+          >
             <ShoppingCart size={22} weight="fill" />
           </AddToCart>
         </div>

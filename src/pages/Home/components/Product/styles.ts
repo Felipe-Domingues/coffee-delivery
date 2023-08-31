@@ -91,4 +91,9 @@ export const AddToCart = styled(BaseButton)`
   &:hover {
     background: ${(props) => props.theme.purple};
   }
+
+  &:disabled {
+    background: ${(props) => props.theme['base-text']};
+    cursor: not-allowed;
+  }
 `

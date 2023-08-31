@@ -31,5 +31,10 @@ export const Container = styled.div`
     cursor: pointer;
     width: 0.875rem;
     height: 0.875rem;
+
+    &:disabled {
+      color: ${(props) => props.theme['base-text']};
+      cursor: not-allowed;
+    }
   }
 `
