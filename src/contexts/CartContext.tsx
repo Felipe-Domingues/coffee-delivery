@@ -93,9 +93,9 @@ export function CartContextProvider({ children }: CartContextProviderProps) {
       })
 
       setTotalProducts(total)
+    } else {
+      setTotalProducts(0)
     }
-
-    setTotalProducts(0)
   }, [productsRelationship])
 
   function addNewProduct(newProduct: ProductRelationship) {

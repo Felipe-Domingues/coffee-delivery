@@ -6,9 +6,13 @@ import {
   TagsContainer,
 } from './styles'
 import { Product } from '../../../../contexts/ProductsContext'
-import { useState } from 'react'
+import { useContext, useState } from 'react'
 import { ShoppingCart } from '@phosphor-icons/react'
 import { CustomInputNumber } from '../../../../components/InputNumber'
+import {
+  CartContext,
+  ProductRelationship,
+} from '../../../../contexts/CartContext'
 
 function PriceToLocalCurrency(Price: number) {
   return Price.toLocaleString('pt-br', { minimumFractionDigits: 2 })
@@ -19,14 +23,16 @@ interface PropsPattern {
 }
 
 export function ProductTemplate(props: PropsPattern) {
-  const [quantity, setQuantity] = useState<number | string>('')
+  const { addNewProduct } = useContext(CartContext)
+
+  const [itemsQuantity, setItemsQuantity] = useState<number | string>('')
 
   function decreaseQuantity(el: HTMLInputElement | null) {
     if (el) {
       if (parseInt(el.value) > 1) {
-        setQuantity(parseInt(el.value) - 1)
+        setItemsQuantity(parseInt(el.value) - 1)
       } else {
-        setQuantity('')
+        setItemsQuantity('')
       }
     }
   }
@@ -40,13 +46,13 @@ export function ProductTemplate(props: PropsPattern) {
 
       const quantityAsInt = parseInt(inputValue.toString())
       if (quantityAsInt < 10) {
-        setQuantity(parseInt(inputValue) + 1)
+        setItemsQuantity(parseInt(inputValue) + 1)
       }
     }
   }
 
   function canIncreaseQuantity(): boolean {
-    const quantityAsInt = parseInt(quantity.toString())
+    const quantityAsInt = parseInt(itemsQuantity.toString())
     if (!isNaN(quantityAsInt)) {
       if (quantityAsInt >= 10) {
         return true
@@ -57,7 +63,17 @@ export function ProductTemplate(props: PropsPattern) {
   }
 
   function canDecreaseQuantity(): boolean {
-    return isNaN(parseInt(quantity.toString()))
+    return isNaN(parseInt(itemsQuantity.toString()))
+  }
+
+  function handleAddProductToCart() {
+    const productToBeAdded: ProductRelationship = {
+      idProduct: props.Product.id,
+      quantity: parseInt(itemsQuantity.toString()),
+    }
+
+    addNewProduct(productToBeAdded)
+    setItemsQuantity('')
   }
 
   return (
@@ -78,15 +94,16 @@ export function ProductTemplate(props: PropsPattern) {
         <div id="CartContainer">
           <CustomInputNumber
             idProduct={props.Product.id}
-            quantity={quantity}
+            quantity={itemsQuantity}
             canDecreaseQuantity={canDecreaseQuantity}
             canIncreaseQuantity={canIncreaseQuantity}
             decreaseQuantity={decreaseQuantity}
             increaseQuantity={increaseQuantity}
           />
           <AddToCart
-            disabled={isNaN(parseInt(quantity.toString()))}
+            disabled={isNaN(parseInt(itemsQuantity.toString()))}
             title="Adicionar ao carrinho"
+            onClick={handleAddProductToCart}
           >
             <ShoppingCart size={22} weight="fill" />
           </AddToCart>

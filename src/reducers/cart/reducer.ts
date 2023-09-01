@@ -12,8 +12,26 @@ interface CartState {
 export function cartReducer(state: CartState, action: any) {
   switch (action.type) {
     case ActionTypes.ADD_NEW_PRODUCT: {
+      const ExistentProductIndex = state.productsRelationship.findIndex(
+        (prod) => {
+          return prod.idProduct === action.payload.newProduct.idProduct
+        },
+      )
+
       return produce(state, (draft) => {
-        draft.productsRelationship.push(action.payload.newProduct)
+        if (ExistentProductIndex < 0) {
+          draft.productsRelationship.push(action.payload.newProduct)
+        } else {
+          const actualQuantity =
+            draft.productsRelationship[ExistentProductIndex].quantity
+          const quantityToBeAdded = action.payload.newProduct.quantity
+
+          const exceed10 = actualQuantity + quantityToBeAdded > 10
+
+          draft.productsRelationship[ExistentProductIndex].quantity = exceed10
+            ? 10
+            : actualQuantity + quantityToBeAdded
+        }
       })
     }
     case ActionTypes.REMOVE_PRODUCT: {
