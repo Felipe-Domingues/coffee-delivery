@@ -8,6 +8,10 @@ export const HeaderContainer = styled.header`
   align-items: center;
   justify-content: space-between;
 
+  @media (max-width: 820px) {
+    margin: 1rem 2rem;
+  }
+
   img#logo {
     cursor: pointer;
   }

@@ -9,6 +9,7 @@ export const GlobalStyle = createGlobalStyle`
   -webkit-box-sizing: border-box;
 }
 
+
 :focus{
   outline: 0;
 }
@@ -24,6 +25,10 @@ body, input,textarea,button{
   font-family: 'Roboto', sans-serif;
   font-weight: 400;
   font-size: 1rem;
+
+  @media (max-width: 820px) {
+    font-size: 87.5%;
+  }
 }
 
 a{
