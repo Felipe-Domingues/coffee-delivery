@@ -1,7 +1,9 @@
 import {
+  Bank,
   CreditCard,
   CurrencyDollar,
   MapPinLine,
+  Money,
   Trash,
 } from '@phosphor-icons/react'
 import {
@@ -85,7 +87,7 @@ export function Checkout() {
                 value="Cartão de Débito"
               />
               <label htmlFor="debitCard">
-                <CreditCard size={16} />
+                <Bank size={16} />
                 <p>CARTÃO DE DÉBITO</p>
               </label>
             </div>
@@ -97,7 +99,7 @@ export function Checkout() {
                 value="Dinheiro"
               />
               <label htmlFor="money">
-                <CreditCard size={16} />
+                <Money size={16} />
                 <p>DINHEIRO</p>
               </label>
             </div>

@@ -321,4 +321,8 @@ export const DoCheckoutButton = styled(BaseButton)`
   line-height: 160%; /* 22.4px */
   text-transform: uppercase;
   padding: 0.75rem 0.5rem;
+
+  &:hover {
+    background: ${(props) => props.theme['yellow-dark']};
+  }
 `
