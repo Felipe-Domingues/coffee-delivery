@@ -34,4 +34,41 @@ body, input,textarea,button{
 a{
   text-decoration: none;
 }
+
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #858585 #FFFFFF;
+}
+
+/* Chrome, Edge and Safari */
+*::-webkit-scrollbar {
+  height: 10px;
+  width: 10px;
+}
+*::-webkit-scrollbar-track {
+  border-radius: 5px;
+  background-color: #FFFFFF;
+}
+
+*::-webkit-scrollbar-track:hover {
+  background-color: #B8C0C2;
+}
+
+*::-webkit-scrollbar-track:active {
+  background-color: #B8C0C2;
+}
+
+*::-webkit-scrollbar-thumb {
+  border-radius: 5px;
+  background-color: #858585;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background-color: #A3A3A3;
+}
+
+*::-webkit-scrollbar-thumb:active {
+  background-color: #595959;
+}
 `

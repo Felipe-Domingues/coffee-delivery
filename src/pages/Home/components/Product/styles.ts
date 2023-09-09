@@ -60,6 +60,7 @@ export const BuyContainer = styled.div`
   padding: 0 0.25rem;
   justify-content: space-between;
   align-items: center;
+  gap: 1rem;
 
   div#CartContainer {
     display: flex;
